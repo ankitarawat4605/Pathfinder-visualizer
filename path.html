@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Pathfinding Algorithm Visualizer</title>
+  <link rel="stylesheet" href="path.css" />
+</head>
+<body>
+  <header>
+    <h1>Pathfinding Algorithm Visualizer</h1>
+    <div class="controls">
+      <label>
+        Algorithm
+        <select id="algo">
+          <option value="bfs">BFS (Unweighted)</option>
+          <option value="dfs">DFS (Unweighted)</option>
+          <option value="dijkstra">Dijkstra (Weighted)</option>
+          <option value="astar">A* (Weighted + Heuristic)</option>
+        </select>
+      </label>
+      <label>
+        Rows <input id="rows" type="number" min="5" max="60" value="20">
+      </label>
+      <label>
+        Cols <input id="cols" type="number" min="10" max="80" value="40">
+      </label>
+      <button id="resize">Resize</button>
+      <label class="range">
+        Speed <input id="speed" type="range" min="1" max="100" value="60">
+      </label>
+      <button id="run" class="primary">Visualize</button>
+      <button id="clearVisited">Clear Visited</button>
+      <button id="reset" class="danger">Reset</button>
+      <button id="maze">Generate Maze</button>
+      <button id="theme">Toggle Theme</button>
+    </div>
+    <div class="modes">
+      <button id="mode-start">Set Start</button>
+      <button id="mode-end">Set End</button>
+      <button id="mode-wall">Draw Walls</button>
+      <button id="mode-erase">Erase</button>
+      <span class="hint">Tip: Shift+Drag to add <b>weights</b> (cost 5). Alt+Drag to remove weight.</span>
+    </div>
+    <div class="legend">
+      <span><i class="box start"></i>Start</span>
+      <span><i class="box end"></i>End</span>
+      <span><i class="box wall"></i>Wall</span>
+      <span><i class="box weight"></i>Weighted (cost 5)</span>
+      <span><i class="box visited"></i>Visited</span>
+      <span><i class="box path"></i>Path</span>
+    </div>
+    <div class="stats">
+      <div>Nodes visited: <b id="nodes">0</b></div>
+      <div>Path length: <b id="plen">0</b></div>
+      <div>Time: <b id="time">0 ms</b></div>
+      <div>Complexity: <b id="complexity">—</b></div>
+    </div>
+  </header>
+
+  <main>
+    <div class="board-wrap">
+      <div id="board" class="board" style="--cols:40;"></div>
+    </div>
+    <p class="tip">Hold mouse and drag to draw walls. Press Shift while dragging to add weighted cells. Press Alt while dragging to remove weight. Resize grid to reset start/end defaults.</p>
+  </main>
+
+  <footer>
+    Built with HTML/CSS/JS. Algorithms: BFS O(V+E), DFS O(V+E), Dijkstra O(E log V), A* O(E log V).
+  </footer>
+
+  <script src="path.js"></script>
+</body>
+</html>
